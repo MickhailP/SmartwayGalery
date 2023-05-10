@@ -11,6 +11,9 @@
 		D77B9B4B2A0B8A24006D587C /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77B9B482A0B8A24006D587C /* NetworkingService.swift */; };
 		D77B9B4C2A0B8A24006D587C /* NetworkingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77B9B492A0B8A24006D587C /* NetworkingProtocol.swift */; };
 		D77B9B4F2A0B8A86006D587C /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77B9B4E2A0B8A86006D587C /* Photo.swift */; };
+		D77B9B542A0B8DD4006D587C /* Tokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77B9B512A0B8DD4006D587C /* Tokens.swift */; };
+		D77B9B552A0B8DD4006D587C /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77B9B522A0B8DD4006D587C /* ErrorMessage.swift */; };
+		D77B9B562A0B8DD4006D587C /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77B9B532A0B8DD4006D587C /* Endpoint.swift */; };
 		D7E036052A0A826D00EC32D6 /* SmartwayGaleryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E036042A0A826D00EC32D6 /* SmartwayGaleryApp.swift */; };
 		D7E036072A0A826D00EC32D6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E036062A0A826D00EC32D6 /* ContentView.swift */; };
 		D7E036092A0A826F00EC32D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7E036082A0A826F00EC32D6 /* Assets.xcassets */; };
@@ -22,6 +25,9 @@
 		D77B9B482A0B8A24006D587C /* NetworkingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		D77B9B492A0B8A24006D587C /* NetworkingProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingProtocol.swift; sourceTree = "<group>"; };
 		D77B9B4E2A0B8A86006D587C /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		D77B9B512A0B8DD4006D587C /* Tokens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tokens.swift; sourceTree = "<group>"; };
+		D77B9B522A0B8DD4006D587C /* ErrorMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		D77B9B532A0B8DD4006D587C /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		D7E036012A0A826D00EC32D6 /* SmartwayGalery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartwayGalery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E036042A0A826D00EC32D6 /* SmartwayGaleryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartwayGaleryApp.swift; sourceTree = "<group>"; };
 		D7E036062A0A826D00EC32D6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,6 +64,16 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		D77B9B502A0B8DD4006D587C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				D77B9B512A0B8DD4006D587C /* Tokens.swift */,
+				D77B9B522A0B8DD4006D587C /* ErrorMessage.swift */,
+				D77B9B532A0B8DD4006D587C /* Endpoint.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		D7E035F82A0A826D00EC32D6 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +97,7 @@
 				D7E036062A0A826D00EC32D6 /* ContentView.swift */,
 				D77B9B4D2A0B8A86006D587C /* Models */,
 				D77B9B462A0B8A24006D587C /* Services */,
+				D77B9B502A0B8DD4006D587C /* Utilities */,
 				D7E036082A0A826F00EC32D6 /* Assets.xcassets */,
 				D7E0360A2A0A826F00EC32D6 /* Preview Content */,
 			);
@@ -166,11 +183,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D77B9B4F2A0B8A86006D587C /* Photo.swift in Sources */,
+				D77B9B562A0B8DD4006D587C /* Endpoint.swift in Sources */,
 				D7E036072A0A826D00EC32D6 /* ContentView.swift in Sources */,
 				D77B9B4A2A0B8A24006D587C /* NetworkingError.swift in Sources */,
 				D7E036052A0A826D00EC32D6 /* SmartwayGaleryApp.swift in Sources */,
+				D77B9B552A0B8DD4006D587C /* ErrorMessage.swift in Sources */,
 				D77B9B4C2A0B8A24006D587C /* NetworkingProtocol.swift in Sources */,
 				D77B9B4B2A0B8A24006D587C /* NetworkingService.swift in Sources */,
+				D77B9B542A0B8DD4006D587C /* Tokens.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

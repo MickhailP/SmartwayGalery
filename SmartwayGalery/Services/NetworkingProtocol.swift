@@ -10,7 +10,7 @@ import UIKit
 import Combine
 
 protocol NetworkingProtocol {
-	func downloadData(from url: URL) -> AnyPublisher<[Photos],Error>
+	func downloadData(from url: URL) -> AnyPublisher<[Photo],Error>
 	func fetchImage(from urlString: String) async -> UIImage?
 }
 

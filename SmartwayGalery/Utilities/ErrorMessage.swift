@@ -15,7 +15,6 @@ enum ErrorMessage: String, Error {
 	case decodingError
 	case encodingError
 	case activeUserMissing
-	case authorisationError
 	case imageIsEmpty
 	case fetchingError
 	case tryAgain

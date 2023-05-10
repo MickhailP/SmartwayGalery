@@ -11,11 +11,11 @@ import Combine
 
 class NetworkingService: NetworkingProtocol {
 
-	func downloadData(from url: URL) -> AnyPublisher<[Photos],Error> {
+	func downloadData(from url: URL) -> AnyPublisher<[Photo],Error> {
 		URLSession.shared.dataTaskPublisher(for: url)
 			.receive(on: DispatchQueue.main)
 			.tryMap(handleOutput)
-			.decode(type: [Photos].self, decoder: JSONDecoder())
+			.decode(type: [Photo].self, decoder: JSONDecoder())
 			.eraseToAnyPublisher()
 	}
 

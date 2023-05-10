@@ -11,24 +11,38 @@ struct GalleryView: View {
 
 	@StateObject var viewModel = GalleryViewModel(networkingService: NetworkingService())
 
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-				.onAppear() {
-					viewModel.fetchImages()
+	var body: some View {
+		ZStack {
+			List {
+				ForEach(viewModel.photos) { photo in
+					GalleryImageRowView(imageUrl: photo.urls.regular)
+						.onAppear {
+							viewModel.loadMoreContentIfNeeded(currentPhoto: photo)
+						}
 				}
-        }
-        .padding()
-
-    }
+				.listRowSeparator(.hidden)
+			}
+			.frame(maxWidth: .infinity)
+			.listStyle(.plain)
+		}
+		.overlay(alignment: .center) {
+			if viewModel.isLoading {
+				ZStack{
+					Color.gray.opacity(0.6)
+					ProgressView()
+				}
+				.ignoresSafeArea()
+			}
+		}
+		.alert(isPresented: $viewModel.showErrorMessage) {
+			Alert(title: Text("Error!"), message: Text(viewModel.errorMessage))
+		}
+	}
 }
 
 
 struct GalleryView_Previews: PreviewProvider {
-    static var previews: some View {
-        GalleryView()
-    }
+	static var previews: some View {
+		GalleryView()
+	}
 }

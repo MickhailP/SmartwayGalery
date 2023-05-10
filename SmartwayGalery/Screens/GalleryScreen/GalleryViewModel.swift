@@ -18,6 +18,9 @@ final class GalleryViewModel: ObservableObject {
 	@Published var showErrorMessage: Bool = false
 	@Published private(set) var errorMessage: String = ""
 
+	@Published var isLoading = false
+
+
 	var page = 0
 
 	private(set) var cancellables = Set<AnyCancellable>()
@@ -25,12 +28,27 @@ final class GalleryViewModel: ObservableObject {
 
 	init(networkingService: NetworkingProtocol) {
 		self.networkingService = networkingService
+		fetchImages()
+	}
 
+	func loadMoreContentIfNeeded(currentPhoto photo: Photo?) {
+
+		guard let photo else {
+			fetchImages()
+			return
+		}
+
+		if photos.last?.id == photo.id {
+			fetchImages()
+		}
 	}
 
 
 	func fetchImages() {
-		page += 1 
+
+		isLoading = true
+
+		page += 1
 
 		let url = Endpoint.photoList(page: page).url
 
@@ -45,13 +63,14 @@ final class GalleryViewModel: ObservableObject {
 				switch completion{
 					case .finished:
 						print("Finished")
+						self.isLoading = false
 					case .failure(let error):
 						print(error)
 						self.showErrorMessage = true
 						self.errorMessage = ErrorMessage.fetchingError.localised
 				}
 			} receiveValue: { [weak self] receivedPhotos in
-				self?.photos.append(contentsOf: receivedPhotos)
+				self?.photos += receivedPhotos
 				print("fetched")
 			}
 			.store(in: &cancellables)

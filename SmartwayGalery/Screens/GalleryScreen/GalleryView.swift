@@ -15,10 +15,16 @@ struct GalleryView: View {
 		ZStack {
 			List {
 				ForEach(viewModel.photos) { photo in
-					GalleryImageRowView(imageUrl: photo.urls.regular)
-						.onAppear {
-							viewModel.loadMoreContentIfNeeded(currentPhoto: photo)
-						}
+					Button {
+						viewModel.selectedPhoto = photo
+					} label: {
+						GalleryImageRowView(imageUrl: photo.urls.regular)
+					}
+
+					.onAppear {
+						viewModel.loadMoreContentIfNeeded(currentPhoto: photo)
+					}
+					.opacity(viewModel.isLoading ? 0.4 : 1)
 				}
 				.listRowSeparator(.hidden)
 			}
@@ -27,13 +33,12 @@ struct GalleryView: View {
 		}
 		.overlay(alignment: .center) {
 			if viewModel.isLoading {
-				ZStack{
-					Color.gray.opacity(0.6)
-					ProgressView()
-				}
-				.ignoresSafeArea()
+				LoadingView()
 			}
 		}
+		.fullScreenCover(item: $viewModel.selectedPhoto, content: { photo in
+			DetailImageScreen(image: nil)
+		})
 		.alert(isPresented: $viewModel.showErrorMessage) {
 			Alert(title: Text("Error!"), message: Text(viewModel.errorMessage))
 		}

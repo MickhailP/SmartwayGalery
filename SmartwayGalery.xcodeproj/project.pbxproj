@@ -14,6 +14,8 @@
 		D75CB49C2A0BA80100E36C25 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75CB49B2A0BA80000E36C25 /* ImageView.swift */; };
 		D75CB49E2A0BFA7600E36C25 /* CrossButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75CB49D2A0BFA7600E36C25 /* CrossButtonView.swift */; };
 		D75CB4A22A0C018200E36C25 /* GalleryImageRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75CB4A12A0C018200E36C25 /* GalleryImageRowView.swift */; };
+		D75CB4A52A0C272D00E36C25 /* DetailImageScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75CB4A42A0C272C00E36C25 /* DetailImageScreen.swift */; };
+		D75CB4A72A0CACAC00E36C25 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75CB4A62A0CACAC00E36C25 /* LoadingView.swift */; };
 		D77B9B4A2A0B8A24006D587C /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77B9B472A0B8A24006D587C /* NetworkingError.swift */; };
 		D77B9B4B2A0B8A24006D587C /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77B9B482A0B8A24006D587C /* NetworkingService.swift */; };
 		D77B9B4C2A0B8A24006D587C /* NetworkingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77B9B492A0B8A24006D587C /* NetworkingProtocol.swift */; };
@@ -34,6 +36,8 @@
 		D75CB49B2A0BA80000E36C25 /* ImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		D75CB49D2A0BFA7600E36C25 /* CrossButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossButtonView.swift; sourceTree = "<group>"; };
 		D75CB4A12A0C018200E36C25 /* GalleryImageRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryImageRowView.swift; sourceTree = "<group>"; };
+		D75CB4A42A0C272C00E36C25 /* DetailImageScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageScreen.swift; sourceTree = "<group>"; };
+		D75CB4A62A0CACAC00E36C25 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		D77B9B472A0B8A24006D587C /* NetworkingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
 		D77B9B482A0B8A24006D587C /* NetworkingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		D77B9B492A0B8A24006D587C /* NetworkingProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingProtocol.swift; sourceTree = "<group>"; };
@@ -60,7 +64,6 @@
 		D75CB4862A0B963400E36C25 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D75CB4972A0BA4E100E36C25 /* CustomViews */,
 				D75CB4872A0B963400E36C25 /* Photo.swift */,
 			);
 			name = Models;
@@ -71,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				D75CB4912A0BA04500E36C25 /* GalleryScreen */,
+				D75CB4A32A0C270D00E36C25 /* DetailImageScreen */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -93,19 +97,13 @@
 			path = ImageView;
 			sourceTree = "<group>";
 		};
-		D75CB4972A0BA4E100E36C25 /* CustomViews */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomViews;
-			sourceTree = "<group>";
-		};
 		D75CB4982A0BA4EA00E36C25 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
 				D75CB4A02A0C016500E36C25 /* Rows */,
 				D75CB4962A0BA4D100E36C25 /* ImageView */,
 				D75CB49F2A0BFA8100E36C25 /* Buttons */,
+				D75CB4A82A0CB0FA00E36C25 /* LoadingView */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -124,6 +122,22 @@
 				D75CB4A12A0C018200E36C25 /* GalleryImageRowView.swift */,
 			);
 			path = Rows;
+			sourceTree = "<group>";
+		};
+		D75CB4A32A0C270D00E36C25 /* DetailImageScreen */ = {
+			isa = PBXGroup;
+			children = (
+				D75CB4A42A0C272C00E36C25 /* DetailImageScreen.swift */,
+			);
+			path = DetailImageScreen;
+			sourceTree = "<group>";
+		};
+		D75CB4A82A0CB0FA00E36C25 /* LoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				D75CB4A62A0CACAC00E36C25 /* LoadingView.swift */,
+			);
+			path = LoadingView;
 			sourceTree = "<group>";
 		};
 		D77B9B462A0B8A24006D587C /* Services */ = {
@@ -261,6 +275,7 @@
 				D75CB4A22A0C018200E36C25 /* GalleryImageRowView.swift in Sources */,
 				D7E036052A0A826D00EC32D6 /* SmartwayGaleryApp.swift in Sources */,
 				D77B9B552A0B8DD4006D587C /* ErrorMessage.swift in Sources */,
+				D75CB4A72A0CACAC00E36C25 /* LoadingView.swift in Sources */,
 				D77B9B4C2A0B8A24006D587C /* NetworkingProtocol.swift in Sources */,
 				D75CB49A2A0BA50E00E36C25 /* ImageViewModel.swift in Sources */,
 				D75CB49E2A0BFA7600E36C25 /* CrossButtonView.swift in Sources */,
@@ -269,6 +284,7 @@
 				D75CB4942A0BA04500E36C25 /* GalleryViewModel.swift in Sources */,
 				D75CB4882A0B963400E36C25 /* Photo.swift in Sources */,
 				D75CB49C2A0BA80100E36C25 /* ImageView.swift in Sources */,
+				D75CB4A52A0C272D00E36C25 /* DetailImageScreen.swift in Sources */,
 				D77B9B542A0B8DD4006D587C /* Tokens.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

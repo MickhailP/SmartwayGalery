@@ -13,6 +13,7 @@ final class GalleryViewModel: ObservableObject {
 	private let networkingService: NetworkingProtocol
 
 	@Published private(set) var photos: [Photo] = []
+	@Published var selectedPhoto: Photo?
 
 	// MARK: Alert tracker
 	@Published var showErrorMessage: Bool = false

@@ -37,7 +37,8 @@ struct GalleryView: View {
 			}
 		}
 		.fullScreenCover(item: $viewModel.selectedPhoto, content: { photo in
-			DetailImageScreen(image: nil)
+
+			DetailImageScreen(image: viewModel.getImageFromCache(by: photo.urls.regular))
 		})
 		.alert(isPresented: $viewModel.showErrorMessage) {
 			Alert(title: Text("Error!"), message: Text(viewModel.errorMessage))

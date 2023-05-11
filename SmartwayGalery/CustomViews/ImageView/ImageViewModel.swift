@@ -11,6 +11,7 @@ import UIKit
 final class ImageViewModel: ObservableObject {
 
 	private let networking: NetworkingProtocol?
+	private let cache: ImageCacheService
 
 	// MARK: View initialiser's properties
 	let imageURL: String?
@@ -20,16 +21,19 @@ final class ImageViewModel: ObservableObject {
 
 
 	// MARK: Init
-	init(imageURL: String, networking: NetworkingProtocol) {
+	init(imageURL: String, networking: NetworkingProtocol, cache: ImageCacheService = ImageCacheService.shared) {
 		self.networking = networking
 		self.imageURL = imageURL
+		self.cache = cache
 		downloadImage()
 	}
 
-	init(image: UIImage) {
+
+	init(image: UIImage, cache: ImageCacheService = ImageCacheService.shared) {
 		self.image = image
 		self.imageURL = nil
 		self.networking = nil
+		self.cache = cache
 	}
 
 	/// Download an image by it's URL from the internet and handles a Result
@@ -37,10 +41,12 @@ final class ImageViewModel: ObservableObject {
 		Task {
 			guard let imageURL else { return }
 
-			let image = await networking?.fetchImage(from: imageURL)
+			if let image = await networking?.fetchImage(from: imageURL) {
+				cache.add(key: imageURL, value: image)
 
-			await MainActor.run {
-				self.image = image
+				await MainActor.run {
+					self.image = image
+				}
 			}
 		}
 	}

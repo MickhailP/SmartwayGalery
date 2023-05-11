@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import UIKit
 import Combine
 
 final class GalleryViewModel: ObservableObject {
 
 	private let networkingService: NetworkingProtocol
+	 let cache: ImageCacheService
 
 	@Published private(set) var photos: [Photo] = []
 	@Published var selectedPhoto: Photo?
@@ -27,8 +29,9 @@ final class GalleryViewModel: ObservableObject {
 	private(set) var cancellables = Set<AnyCancellable>()
 
 
-	init(networkingService: NetworkingProtocol) {
+	init(networkingService: NetworkingProtocol, cache: ImageCacheService = ImageCacheService.shared) {
 		self.networkingService = networkingService
+		self.cache = cache
 		fetchImages()
 	}
 
@@ -72,8 +75,14 @@ final class GalleryViewModel: ObservableObject {
 				}
 			} receiveValue: { [weak self] receivedPhotos in
 				self?.photos += receivedPhotos
+				
 				print("fetched")
 			}
 			.store(in: &cancellables)
+	}
+
+
+	func getImageFromCache(by key: String) -> UIImage? {
+		cache.get(key: key)
 	}
 }

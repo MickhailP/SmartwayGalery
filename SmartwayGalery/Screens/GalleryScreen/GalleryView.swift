@@ -9,6 +9,8 @@ import SwiftUI
 
 struct GalleryView: View {
 
+	@EnvironmentObject var networkMonitor: NetworkMonitor
+
 	@StateObject var viewModel = GalleryViewModel(networkingService: NetworkingService())
 
 	var body: some View {
@@ -43,6 +45,12 @@ struct GalleryView: View {
 		})
 		.alert(isPresented: $viewModel.showErrorMessage) {
 			Alert(title: Text("Error!"), message: Text(viewModel.errorMessage))
+		}
+		.onChange(of: networkMonitor.isConnected) { status in
+			if status == false {
+				viewModel.showErrorMessage = true
+				viewModel.errorMessage = ErrorMessage.connectionLost.localised
+			}
 		}
 	}
 }

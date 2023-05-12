@@ -18,18 +18,20 @@ final class GalleryViewModel: ObservableObject {
 
 	// MARK: Alert tracker
 	@Published var showErrorMessage: Bool = false
-	@Published private(set) var errorMessage: String = ""
-	@Published var isLoading = false
+	@Published var errorMessage: String = ""
+	
+	@Published private(set) var isLoading = false
 
-	var page = 0
+	private var page = 0
 
-	private(set) var cancellables = Set<AnyCancellable>()
+	private var cancellables = Set<AnyCancellable>()
 
 
 	init(networkingService: NetworkingProtocol) {
 		self.networkingService = networkingService
 		fetchImages()
 	}
+
 
 	func loadMoreContentIfNeeded(currentPhoto photo: Photo) {
 		if photos.last?.id == photo.id {

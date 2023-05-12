@@ -14,7 +14,7 @@ final class ImageCacheService {
 	private init () { }
 
 
-	private var photoCache: NSCache<NSString, UIImage> = {
+	private var imageCache: NSCache<NSString, UIImage> = {
 		var cache = NSCache<NSString, UIImage>()
 		cache.countLimit = 200
 		cache.totalCostLimit = 1024 * 1024 * 100 //100 MB
@@ -23,17 +23,17 @@ final class ImageCacheService {
 
 
 	func add(key: String, value: UIImage) {
-		photoCache.setObject(value, forKey: key as NSString)
+		imageCache.setObject(value, forKey: key as NSString)
 	}
 
 
 	func get(key: String) -> UIImage? {
-		photoCache.object(forKey: key as NSString)
+		imageCache.object(forKey: key as NSString)
 	}
 
 
-	func clearCache() {
-		photoCache.removeAllObjects()
+	func clearImageCache() {
+		imageCache.removeAllObjects()
 		print("cache cleared")
 	}
 }

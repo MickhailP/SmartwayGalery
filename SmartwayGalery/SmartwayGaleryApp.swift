@@ -12,10 +12,13 @@ import SwiftUI
 struct SmartwayGaleryApp: App {
 
 	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+	@StateObject var networkMonitor = NetworkMonitor()
+
 
     var body: some Scene {
         WindowGroup {
 			GalleryView()
+				.environmentObject(networkMonitor)
         }
     }
 }
@@ -23,6 +26,6 @@ struct SmartwayGaleryApp: App {
 
 @objc class AppDelegate: NSObject, UIApplicationDelegate {
 	func applicationWillTerminate(_ application: UIApplication) {
-		ImageCacheService.shared.clearCache()
+		ImageCacheService.shared.clearImageCache()
 	}
 }

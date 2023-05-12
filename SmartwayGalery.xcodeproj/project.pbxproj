@@ -26,6 +26,8 @@
 		D7E036092A0A826F00EC32D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7E036082A0A826F00EC32D6 /* Assets.xcassets */; };
 		D7E0360C2A0A826F00EC32D6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7E0360B2A0A826F00EC32D6 /* Preview Assets.xcassets */; };
 		D7FF2D6D2A0E87AB0052901F /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FF2D6C2A0E87AB0052901F /* Photo.swift */; };
+		D7FF2D6F2A0E89800052901F /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FF2D6E2A0E89800052901F /* NetworkMonitor.swift */; };
+		D7FF2D752A0E8FC70052901F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7FF2D772A0E8FC70052901F /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,9 @@
 		D7E036082A0A826F00EC32D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7E0360B2A0A826F00EC32D6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D7FF2D6C2A0E87AB0052901F /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		D7FF2D6E2A0E89800052901F /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		D7FF2D762A0E8FC70052901F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D7FF2D782A0E8FCB0052901F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +143,7 @@
 				D77B9B492A0B8A24006D587C /* NetworkingProtocol.swift */,
 				D77B9B482A0B8A24006D587C /* NetworkingService.swift */,
 				D77B9B472A0B8A24006D587C /* NetworkingError.swift */,
+				D7FF2D6E2A0E89800052901F /* NetworkMonitor.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -196,6 +202,7 @@
 				D7FF2D6B2A0E875B0052901F /* Models */,
 				D77B9B462A0B8A24006D587C /* Services */,
 				D77B9B502A0B8DD4006D587C /* Utilities */,
+				D7FF2D702A0E8E210052901F /* Localizables */,
 				D7E036082A0A826F00EC32D6 /* Assets.xcassets */,
 				D7E0360A2A0A826F00EC32D6 /* Preview Content */,
 			);
@@ -216,6 +223,14 @@
 				D7FF2D6C2A0E87AB0052901F /* Photo.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		D7FF2D702A0E8E210052901F /* Localizables */ = {
+			isa = PBXGroup;
+			children = (
+				D7FF2D772A0E8FC70052901F /* Localizable.strings */,
+			);
+			path = Localizables;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +275,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = D7E035F82A0A826D00EC32D6;
 			productRefGroup = D7E036022A0A826D00EC32D6 /* Products */;
@@ -277,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7E0360C2A0A826F00EC32D6 /* Preview Assets.xcassets in Resources */,
+				D7FF2D752A0E8FC70052901F /* Localizable.strings in Resources */,
 				D7E036092A0A826F00EC32D6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,6 +312,7 @@
 				D77B9B552A0B8DD4006D587C /* ErrorMessage.swift in Sources */,
 				D75CB4A72A0CACAC00E36C25 /* LoadingView.swift in Sources */,
 				D77B9B4C2A0B8A24006D587C /* NetworkingProtocol.swift in Sources */,
+				D7FF2D6F2A0E89800052901F /* NetworkMonitor.swift in Sources */,
 				D75CB49A2A0BA50E00E36C25 /* ImageViewModel.swift in Sources */,
 				D75CB49E2A0BFA7600E36C25 /* CrossButtonView.swift in Sources */,
 				D77B9B4B2A0B8A24006D587C /* NetworkingService.swift in Sources */,
@@ -309,6 +327,18 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D7FF2D772A0E8FC70052901F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D7FF2D762A0E8FC70052901F /* en */,
+				D7FF2D782A0E8FCB0052901F /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D7E0360D2A0A826F00EC32D6 /* Debug */ = {
@@ -361,7 +391,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -415,7 +445,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -448,6 +478,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = MichailDev.SmartwayGalery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -477,6 +510,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = MichailDev.SmartwayGalery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

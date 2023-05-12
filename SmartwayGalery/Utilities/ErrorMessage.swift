@@ -9,15 +9,13 @@ import Foundation
 
 enum ErrorMessage: String, Error {
 	case error
+	case connectionLost
 	case unknownError
 	case invalidResponse
 	case dataIsMissing
 	case decodingError
 	case encodingError
-	case activeUserMissing
-	case imageIsEmpty
 	case fetchingError
-	case tryAgain
 	case badURL
 
 	var localised: String {

@@ -16,6 +16,7 @@ struct ImageView: View {
 		_viewModel = StateObject(wrappedValue: ImageViewModel(imageUrl: imageUrl, networking: NetworkingService()))
 	}
 
+
 	// MARK: View
 	@ViewBuilder var body: some View {
 		if let image = viewModel.image {
@@ -31,6 +32,7 @@ struct ImageView: View {
 		}
 	}
 }
+
 
 // MARK: Preview
 struct ImageView_Previews: PreviewProvider {

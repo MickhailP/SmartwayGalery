@@ -12,13 +12,10 @@ import Combine
 class NetworkingService: NetworkingProtocol {
 
 	func downloadData(from url: URL) -> AnyPublisher<[Photo],Error> {
-		let decoder = JSONDecoder()
-		decoder.keyDecodingStrategy = .convertFromSnakeCase
-
-		return URLSession.shared.dataTaskPublisher(for: url)
+		URLSession.shared.dataTaskPublisher(for: url)
 			.receive(on: DispatchQueue.main)
 			.tryMap(handleOutput)
-			.decode(type: [Photo].self, decoder: decoder)
+			.decode(type: [Photo].self, decoder: JSONDecoder())
 			.eraseToAnyPublisher()
 	}
 

@@ -14,7 +14,7 @@ struct GalleryImageRowView: View {
 	var body: some View {
 		ImageView(imageUrl: imageUrl)
 			.clipShape(RoundedRectangle(cornerRadius: 10))
-			.frame(maxWidth: .infinity)
+			.frame(maxWidth: .infinity, minHeight: 250)
 			.shadow(radius: 5)
 	}
 }

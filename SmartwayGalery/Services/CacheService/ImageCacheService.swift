@@ -14,7 +14,7 @@ final class ImageCacheService {
 	private init () { }
 
 
-	var photoCache: NSCache<NSString, UIImage> = {
+	private var photoCache: NSCache<NSString, UIImage> = {
 		var cache = NSCache<NSString, UIImage>()
 		cache.countLimit = 200
 		cache.totalCostLimit = 1024 * 1024 * 100 //100 MB

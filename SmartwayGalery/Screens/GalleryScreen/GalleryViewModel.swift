@@ -12,7 +12,6 @@ import Combine
 final class GalleryViewModel: ObservableObject {
 
 	private let networkingService: NetworkingProtocol
-	 let cache: ImageCacheService
 
 	@Published private(set) var photos: [Photo] = []
 	@Published var selectedPhoto: Photo?
@@ -20,35 +19,26 @@ final class GalleryViewModel: ObservableObject {
 	// MARK: Alert tracker
 	@Published var showErrorMessage: Bool = false
 	@Published private(set) var errorMessage: String = ""
-
 	@Published var isLoading = false
-
 
 	var page = 0
 
 	private(set) var cancellables = Set<AnyCancellable>()
 
 
-	init(networkingService: NetworkingProtocol, cache: ImageCacheService = ImageCacheService.shared) {
+	init(networkingService: NetworkingProtocol) {
 		self.networkingService = networkingService
-		self.cache = cache
 		fetchImages()
 	}
 
-	func loadMoreContentIfNeeded(currentPhoto photo: Photo?) {
-
-		guard let photo else {
-			fetchImages()
-			return
-		}
-
+	func loadMoreContentIfNeeded(currentPhoto photo: Photo) {
 		if photos.last?.id == photo.id {
 			fetchImages()
 		}
 	}
 
 
-	func fetchImages() {
+	private func fetchImages() {
 
 		isLoading = true
 
@@ -72,6 +62,7 @@ final class GalleryViewModel: ObservableObject {
 						print(error)
 						self.showErrorMessage = true
 						self.errorMessage = ErrorMessage.fetchingError.localised
+						self.isLoading = false
 				}
 			} receiveValue: { [weak self] receivedPhotos in
 				self?.photos += receivedPhotos
@@ -79,10 +70,5 @@ final class GalleryViewModel: ObservableObject {
 				print("fetched")
 			}
 			.store(in: &cancellables)
-	}
-
-
-	func getImageFromCache(by key: String) -> UIImage? {
-		cache.get(key: key)
 	}
 }

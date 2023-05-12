@@ -11,20 +11,13 @@ struct ImageView: View {
 	
 	@StateObject private var viewModel: ImageViewModel
 	
-	
-	// MARK: Inits
-	init(imageURL: String) {
-		_viewModel = StateObject(wrappedValue: ImageViewModel(imageURL: imageURL, networking: NetworkingService()))
+//	 MARK: Init
+	init(imageUrl: String) {
+		_viewModel = StateObject(wrappedValue: ImageViewModel(imageUrl: imageUrl, networking: NetworkingService()))
 	}
-	
-	
-	init(image: UIImage) {
-		_viewModel = StateObject(wrappedValue: ImageViewModel(image: image))
-	}
-	
-	
+
 	// MARK: View
-	var body: some View {
+	@ViewBuilder var body: some View {
 		if let image = viewModel.image {
 			Image(uiImage: image)
 				.resizable()
@@ -33,7 +26,6 @@ struct ImageView: View {
 			ZStack {
 				RoundedRectangle(cornerRadius: 10)
 					.fill(.ultraThickMaterial)
-					.frame(height: 100)
 				ProgressView()
 			}
 		}
@@ -43,6 +35,6 @@ struct ImageView: View {
 // MARK: Preview
 struct ImageView_Previews: PreviewProvider {
 	static var previews: some View {
-		ImageView(imageURL: Photo.example.urls.regular)
+		ImageView(imageUrl: Photo.example.urls.regular)
 	}
 }

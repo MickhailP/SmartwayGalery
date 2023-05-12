@@ -12,23 +12,25 @@ struct GalleryView: View {
 	@StateObject var viewModel = GalleryViewModel(networkingService: NetworkingService())
 
 	var body: some View {
-		ZStack {
+		VStack {
 			List {
 				ForEach(viewModel.photos) { photo in
-					Button {
-						viewModel.selectedPhoto = photo
-					} label: {
-						GalleryImageRowView(imageUrl: photo.urls.regular)
+					HStack {
+						Button {
+							viewModel.selectedPhoto = photo
+						} label: {
+							GalleryImageRowView(imageUrl: photo.urls.small)
+								.opacity(viewModel.isLoading ? 0.4 : 1)
+						}
 					}
-
+					.buttonStyle(.plain)
 					.onAppear {
 						viewModel.loadMoreContentIfNeeded(currentPhoto: photo)
 					}
-					.opacity(viewModel.isLoading ? 0.4 : 1)
+
 				}
 				.listRowSeparator(.hidden)
 			}
-			.frame(maxWidth: .infinity)
 			.listStyle(.plain)
 		}
 		.overlay(alignment: .center) {
@@ -37,8 +39,7 @@ struct GalleryView: View {
 			}
 		}
 		.fullScreenCover(item: $viewModel.selectedPhoto, content: { photo in
-
-			DetailImageScreen(image: viewModel.getImageFromCache(by: photo.urls.regular))
+			DetailImageScreen(imageURL: photo.urls.small)
 		})
 		.alert(isPresented: $viewModel.showErrorMessage) {
 			Alert(title: Text("Error!"), message: Text(viewModel.errorMessage))

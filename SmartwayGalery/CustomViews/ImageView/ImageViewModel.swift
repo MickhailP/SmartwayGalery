@@ -13,38 +13,40 @@ final class ImageViewModel: ObservableObject {
 	private let networking: NetworkingProtocol?
 	private let cache: ImageCacheService
 
-	// MARK: View initialiser's properties
-	let imageURL: String?
 
-	// MARK: Image State
+	@Published var imageUrl: String?
 	@Published private(set) var image: UIImage?
 
 
 	// MARK: Init
-	init(imageURL: String, networking: NetworkingProtocol, cache: ImageCacheService = ImageCacheService.shared) {
+	init(imageUrl: String, networking: NetworkingProtocol) {
 		self.networking = networking
-		self.imageURL = imageURL
-		self.cache = cache
-		downloadImage()
+		self.imageUrl = imageUrl
+		self.cache = ImageCacheService.shared
+		getImage()
 	}
 
 
-	init(image: UIImage, cache: ImageCacheService = ImageCacheService.shared) {
-		self.image = image
-		self.imageURL = nil
-		self.networking = nil
-		self.cache = cache
+	private func getImage() {
+		guard let imageUrl else { return }
+		
+		if let image = cache.get(key: imageUrl) {
+			self.image = image
+		} else {
+			downloadImage()
+		}
 	}
 
-	/// Download an image by it's URL from the internet and handles a Result
+
+	/// Download an image by it's URL from the internet
 	private func downloadImage() {
 		Task {
-			guard let imageURL else { return }
+			guard let imageUrl else { return }
 
-			if let image = await networking?.fetchImage(from: imageURL) {
-				cache.add(key: imageURL, value: image)
+			if let image = await networking?.fetchImage(from: imageUrl) {
+				cache.add(key: imageUrl, value: image)
 
-				await MainActor.run {
+				DispatchQueue.main.async {
 					self.image = image
 				}
 			}

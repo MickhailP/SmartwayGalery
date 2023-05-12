@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  SmartwayGalery
+
+  Created by Миша Перевозчиков on 12.05.2023.
+  
+*/
+
+"ErrorMessage_error" = "Error";
+"ErrorMessage_connectionLost" = "Internet connection was lost.";
+"ErrorMessage_unknownError" = "Unknown error";
+
+"ErrorMessage_invalidResponse" = "Invalid response from server.";
+"ErrorMessage_dataIsMissing" = "The data is missing.";
+"ErrorMessage_decodingError" = "The data isn't in correct format.";
+"ErrorMessage_encodingError" = "The data isn't in correct format.";
+"ErrorMessage_fetchingError" = "The data couldn't be received from server.";
+"ErrorMessage_badURL" = "Incorrect URL";

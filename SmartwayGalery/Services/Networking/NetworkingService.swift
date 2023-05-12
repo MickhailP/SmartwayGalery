@@ -18,6 +18,7 @@ class NetworkingService: NetworkingProtocol {
 			.decode(type: [Photo].self, decoder: JSONDecoder())
 			.eraseToAnyPublisher()
 	}
+	
 
 	private func handleOutput(output: URLSession.DataTaskPublisher.Output) throws -> Data {
 		guard let response = output.response as? HTTPURLResponse,

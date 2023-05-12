@@ -7,11 +7,25 @@
 
 import SwiftUI
 
+
 @main
 struct SmartwayGaleryApp: App {
+
+	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+	@StateObject var networkMonitor = NetworkMonitor()
+
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+			GalleryView()
+				.environmentObject(networkMonitor)
         }
     }
+}
+
+
+@objc class AppDelegate: NSObject, UIApplicationDelegate {
+	func applicationWillTerminate(_ application: UIApplication) {
+		ImageCacheService.shared.clearImageCache()
+	}
 }

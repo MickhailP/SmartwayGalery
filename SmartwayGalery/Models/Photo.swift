@@ -41,6 +41,7 @@ struct Urls: Codable {
 	}
 }
 
+
 extension Photo {
 	static let example = Photo(apiId: "22112", slug: "121231", createdAt: "2023-04-28T13:21:00Z", updatedAt: "2023-04-28T13:21:00Z", width: 8256, height: 5504, description: "Custom", altDescription: "Alter.", urls: urls)
 

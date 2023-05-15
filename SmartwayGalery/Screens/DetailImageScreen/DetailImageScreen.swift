@@ -19,6 +19,7 @@ struct DetailImageScreen: View {
 	@State private var showErrorMessage: Bool = false
 	@State private var errorMessage: String = ""
 
+
     var body: some View {
 		ZStack {
 			Color.black.opacity(0.8)
@@ -33,7 +34,6 @@ struct DetailImageScreen: View {
 		.overlay(alignment: .topLeading) {
 			CrossButtonView()
 		}
-
 		.alert(isPresented: $showErrorMessage) {
 			Alert(title: Text("Error!"), message: Text(errorMessage))
 		}
@@ -47,8 +47,9 @@ struct DetailImageScreen: View {
 }
 
 
+//MARK: - Zoom Gesture
 extension DetailImageScreen {
-	
+
 	private var zoomGesture: some Gesture {
 		MagnificationGesture()
 			.onChanged{ value in

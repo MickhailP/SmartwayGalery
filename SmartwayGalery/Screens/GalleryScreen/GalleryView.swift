@@ -13,6 +13,7 @@ struct GalleryView: View {
 
 	@StateObject var viewModel = GalleryViewModel(networkingService: NetworkingService())
 
+
 	var body: some View {
 		VStack {
 			List {
@@ -29,7 +30,6 @@ struct GalleryView: View {
 					.onAppear {
 						viewModel.loadMoreContentIfNeeded(currentPhoto: photo)
 					}
-
 				}
 				.listRowSeparator(.hidden)
 			}

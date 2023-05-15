@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import Combine
 
-class NetworkingService: NetworkingProtocol {
+final class NetworkingService: NetworkingProtocol {
 
 	func downloadData(from url: URL) -> AnyPublisher<[Photo],Error> {
 		URLSession.shared.dataTaskPublisher(for: url)

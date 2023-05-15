@@ -11,13 +11,13 @@ struct ImageView: View {
 	
 	@StateObject private var viewModel: ImageViewModel
 	
-//	 MARK: Init
+//MARK: Init
 	init(imageUrl: String) {
 		_viewModel = StateObject(wrappedValue: ImageViewModel(imageUrl: imageUrl, networking: NetworkingService()))
 	}
 
 
-	// MARK: View
+// MARK: View
 	@ViewBuilder var body: some View {
 		if let image = viewModel.image {
 			Image(uiImage: image)

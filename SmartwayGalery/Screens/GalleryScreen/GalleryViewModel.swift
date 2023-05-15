@@ -16,7 +16,7 @@ final class GalleryViewModel: ObservableObject {
 	@Published private(set) var photos: [Photo] = []
 	@Published var selectedPhoto: Photo?
 
-	// MARK: Alert tracker
+	// MARK: - Alert tracker
 	@Published var showErrorMessage: Bool = false
 	@Published var errorMessage: String = ""
 	

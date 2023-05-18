@@ -26,7 +26,7 @@ struct ImageView: View {
 		} else {
 			ZStack {
 				RoundedRectangle(cornerRadius: 10)
-					.fill(.ultraThickMaterial)
+					.fill(Color.gray.opacity(0.3))
 				ProgressView()
 			}
 		}

@@ -8,15 +8,22 @@
 import SwiftUI
 
 struct LoadingView: View {
+
     var body: some View {
 		ZStack{
 			Color.gray.opacity(0.4)
 
-			VStack {
-				ProgressView()
-					.scaleEffect(2)
-					.tint(.blue)
-					.padding(.bottom, 5)
+			VStack(spacing: 5) {
+				if #available(iOS 15.0, *) {
+					ProgressView()
+						.tint(.blue)
+						.scaleEffect(2)
+				} else {
+					ProgressView()
+						.progressViewStyle(CircularProgressViewStyle(tint: .blue))
+						.scaleEffect(2)
+				}
+
 				Text("Loading more content...")
 			}
 		}

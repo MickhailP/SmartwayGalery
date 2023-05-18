@@ -22,18 +22,26 @@ struct DetailImageScreen: View {
 
     var body: some View {
 		ZStack {
-			Color.black.opacity(0.8)
+			Group {
+				Color.black.opacity(0.8)
 
-			ImageView(imageUrl: imageURL)
-				.scaleEffect(1 + currentZoomValue)
-				.gesture(zoomGesture)
-			
+				ImageView(imageUrl: imageURL)
+					.scaleEffect(1 + currentZoomValue)
+					.gesture(zoomGesture)
+			}
+				.ignoresSafeArea()
+
+			VStack {
+				HStack {
+					CrossButtonView()
+						.frame(width: 30, height: 30)
+					Spacer()
+				}
+				Spacer()
+			}
+			.padding(15)
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
-		.ignoresSafeArea()
-		.overlay(alignment: .topLeading) {
-			CrossButtonView()
-		}
 		.alert(isPresented: $showErrorMessage) {
 			Alert(title: Text("Error!"), message: Text(errorMessage))
 		}
@@ -45,6 +53,7 @@ struct DetailImageScreen: View {
 		}
 	}
 }
+
 
 
 //MARK: - Zoom Gesture
@@ -65,7 +74,9 @@ extension DetailImageScreen {
 
 
 struct DetailImageScreen_Previews: PreviewProvider {
+
     static var previews: some View {
 		DetailImageScreen(imageURL: Photo.example.urls.regular)
+			.environmentObject(NetworkMonitor())
     }
 }

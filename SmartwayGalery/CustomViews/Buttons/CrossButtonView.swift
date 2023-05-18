@@ -9,26 +9,26 @@ import SwiftUI
 
 struct CrossButtonView: View {
 
-	@Environment(\.dismiss) var dismiss
+	@Environment(\.presentationMode) var presentationMode
 
 	var body: some View {
 		Button {
-			dismiss()
+			print("Pressed")
+			presentationMode.wrappedValue.dismiss()
 		} label: {
 			Image(systemName: "xmark")
-				.font(.headline)
-				.foregroundColor(.primary)
-				.padding(5)
-				.background(.ultraThickMaterial)
+				.foregroundColor(.white)
+				.scaledToFit()
+				.frame(width: 30, height: 30)
+				.background(Color.gray.opacity(0.7))
 				.clipShape(Circle())
 				.shadow(radius: 5)
-				.padding()
 		}
-    }
+	}
 }
 
 struct CrossButtonView_Previews: PreviewProvider {
-    static var previews: some View {
-        CrossButtonView()
-    }
+	static var previews: some View {
+		CrossButtonView()
+	}
 }

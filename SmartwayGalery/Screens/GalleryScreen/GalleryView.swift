@@ -15,30 +15,28 @@ struct GalleryView: View {
 
 
 	var body: some View {
-		VStack {
-			List {
-				ForEach(viewModel.photos) { photo in
-					HStack {
-						Button {
-							viewModel.selectedPhoto = photo
-						} label: {
-							GalleryImageRowView(imageUrl: photo.urls.small)
-								.opacity(viewModel.isLoading ? 0.4 : 1)
+		ZStack {
+			VStack {
+				List {
+					ForEach(viewModel.photos) { photo in
+						HStack {
+							Button {
+								viewModel.selectedPhoto = photo
+							} label: {
+								GalleryImageRowView(imageUrl: photo.urls.small)
+									.opacity(viewModel.isLoading ? 0.4 : 1)
+							}
+						}
+						.buttonStyle(.plain)
+						.onAppear {
+							viewModel.loadMoreContentIfNeeded(currentPhoto: photo)
 						}
 					}
-					.buttonStyle(.plain)
-					.onAppear {
-						viewModel.loadMoreContentIfNeeded(currentPhoto: photo)
-					}
 				}
-				.listRowSeparator(.hidden)
+				.listStyle(.plain)
 			}
-			.listStyle(.plain)
-		}
-		.overlay(alignment: .center) {
-			if viewModel.isLoading {
-				LoadingView()
-			}
+
+			LoadingView().opacity(viewModel.isLoading ? 1 : 0)
 		}
 		.fullScreenCover(item: $viewModel.selectedPhoto, content: { photo in
 			DetailImageScreen(imageURL: photo.urls.small)
@@ -52,6 +50,7 @@ struct GalleryView: View {
 				viewModel.errorMessage = ErrorMessage.connectionLost.localised
 			}
 		}
+
 	}
 }
 
